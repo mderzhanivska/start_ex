@@ -20,3 +20,19 @@ $('form button').click(function(e) {
 									</tr>`);
 	}
 });
+
+
+/*
+	animation click-button to id-block
+*/
+
+$('a[href^="#"]').click(function(e) {
+	const target = $($(this).attr('href'));
+
+  if( target.length ) {
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: target.offset().top
+    }, 1000);
+  }
+});

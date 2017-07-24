@@ -1,0 +1,15 @@
+// @import "variables";
+// @import "animate";
+
+ 
+@mixin play-button($time: $t-duration) {
+	transition: all $t-duration ease-in-out;
+  &:after {
+		animation: play-button $time infinite;
+  }
+}
+
+@mixin button-hover($time: $t-duration) {
+	transition: all $t-duration ease-in;
+}
+ 

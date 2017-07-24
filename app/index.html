@@ -21,7 +21,7 @@
 				</button>
 			</div>
 				
-			<button type="button" class="try-now">TRY NOW</button>
+			<a href="#try" class="button try-now">TRY NOW</a>
 			<p class="comment">* No need to add cards details</p>
 		</div>
 	</header>
@@ -132,30 +132,28 @@
 					<h4>NEW FEATURES</h4>
 					<h2>Some awesone features</h2>
 				</div>
+
 				<div class="col-md-8 col-md-offset-2 par">
 					<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Etiasem malesuada magn. Vestibulum felis euismod semper.</p>
 				</div>
+
 				<div class="col-md-8 col-md-offset-2 brows">
 					<span><img src="img/macbook.png" alt=""></span>
 				</div>	
-				
 			</div>
 		</div>
 	</section>
 
-	<section class="try-it">
+	<section class="try-it" id="try">
 		<div class="container">
-
 			<div class="row text-center">
 				<h4>NEW FEATURES</h4>
 				<h2>Over 1000 designers are using ... </h2>
 				<div class="days">
-					<span class="arrow"></span>
-					<p>30 days free trial for all.</p>
+					<p><span class="arrow"></span>30 days free trial for all.</p>
 				</div>
 				
-
-				<form id="try" action="/server/" method="post">
+				<form action="/server/" method="post">
 					<div class="col-md-3 in">
 						<input type="text" name="name" placeholder="FULL NAME" required>
 					</div>
@@ -166,7 +164,7 @@
 						<input type="password" name="password" placeholder="PASSWORD" required>
 					</div>
 					<div class="col-md-3 in">
-						<button class="col-md-3 try-button" data-toggle="modal" data-target="#modal-send-form">TRY NOW</button>
+						<button class="button col-md-3 try-button" data-toggle="modal" data-target="#modal-send-form">TRY NOW</button>
 					</div>
 				</form>
 
@@ -178,14 +176,13 @@
 	<footer>
 		<div class="container">
 			<div class="row foot">
-
 				<div class="ex col-md-3">
 					<h2>Start <span class="ex">Ex</span></h2>
 					<p>Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. <br> USA &  CAN: 1-888-123-4567 <br>Address: 34 Brokel Rd. NY</p>
 				</div>
 				
-				<div class="panel-group" id="footer-links">
-					<div class="panel panel-default col-md-6">
+				<div class="panel-group " id="footer-links">
+					<div class="panel panel-default col-md-2 support">
 						<a href="#footer-support" data-parent="#footer-links" data-toggle="collapse" class="collapsed">Support</a>
 						<div class="collapse" id="footer-support">
 							<ul>
@@ -196,7 +193,7 @@
 						</div>
 					</div>
 
-					<div class="panel panel-default col-md-6">
+					<div class="panel panel-default col-md-2 about">
 						<a href="#footer-about" data-parent="#footer-links" data-toggle="collapse" class="collapsed">About US</a>
 						<div class="collapse" id="footer-about">
 							<ul>
@@ -215,7 +212,7 @@
 						<button data-toggle="modal" data-target="#modal-send-form"></button>
 					</form>
 
-					<div class="links">
+					<div class="links text-center">
 						<a href="#"><span class="icon-1"></span></a>
 						<a href="#"><span class="icon-2"></span></a>
 						<a href="#"><span class="icon-3"></span></a>
