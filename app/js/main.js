@@ -1,4 +1,6 @@
 
+const addScrollTop = (window.innerWidth < 1200) ? 500 : 300;
+
 /*
 	send form on the server
 */
@@ -35,4 +37,19 @@ $('a[href^="#"]').click(function(e) {
         scrollTop: target.offset().top
     }, 1000);
   }
+});
+
+
+/*
+	add class to block when scroll
+*/
+
+$(window).scroll(function() {
+	const scrollTop = $(this).scrollTop();
+
+	$('.scroll').each(function() {
+		if ((scrollTop + addScrollTop) > $(this).offset().top) {
+			$(this).addClass('active');
+		}
+	});	
 });

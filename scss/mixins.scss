@@ -12,4 +12,15 @@
 @mixin button-hover($time: $t-duration) {
 	transition: all $t-duration ease-in;
 }
- 
+
+@mixin bounce($time: $t-duration) {
+	animation: bounce $time;
+}
+
+@mixin bounce-in($time: $t-duration) {
+	animation: bounceIn $time;
+}
+
+@mixin slideInUp($time: $t-duration) {
+	animation: slideInUp $time;
+}

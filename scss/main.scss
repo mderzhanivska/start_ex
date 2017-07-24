@@ -9,9 +9,10 @@
 body {
 	font-family: 'Exo', sans-serif;
 	background-image: url(../img/bg.png);
+	overflow-x: hidden;
 }
 
-@media ($mobile) {
+@media ($m-tablet) {
 	.collapse {
 		display: block !important;
 		height: 100% !important;
@@ -63,8 +64,7 @@ body {
 			padding: 0;
 			background: transparent;
 			border: 0;
-			&:hover {
-			}
+			&:hover {}
 		}
 
 		.circle {
@@ -74,12 +74,11 @@ body {
 			width: 100%;
 			height: 100%;
 			text-align: center;
-			border-radius: 50%;
-			// border: 1px solid $color-dark-blue;
+			border-radius: 50%; // border: 1px solid $color-dark-blue;
 			background: $color-dark-blue;
-  		@include play-button(2s);
+			@include play-button(2s);
 
-			&:hover {    
+			&:hover {
 				box-shadow: 0 0 10px 1px $color-grey;
 			}
 
@@ -128,12 +127,6 @@ body {
 		font: 400 12px 'Exo', sans-serif;
 		letter-spacing: 1.5px;
 		color: $color-almost-black;
-		@media ($phone) {
-			color: $color-almost-white;
-		}
-		@media ($tablet) {
-			color: $color-almost-white;
-		}
 		@media ($desktop) {
 			color: $color-almost-white;
 		}
@@ -147,17 +140,20 @@ body {
 	padding-bottom: 139px;
 	z-index: 2;
 	background: $color-almost-white;
-	@media ($phone) {
-		padding-bottom: 5%;
-	}
-	@media ($tablet) {
-		padding-bottom: 5%;
-	}
 	@media ($desktop) {
 		padding-bottom: 5%;
 	}
 
-	@media ($sm-phone) {
+	@media ($m-tablet) {
+		&.active {
+			&:after {
+				transition: 1s ease-out;
+				transform: translate(0);
+			}
+		}
+	}
+
+	@media ($m-tablet) {
 		&:before {
 			content: "";
 			position: absolute;
@@ -178,6 +174,7 @@ body {
 			height: 0;
 			border-top: 485px solid transparent;
 			border-right: 569px solid $color-pink;
+			transform: translate(570px);
 		}
 	}
 
@@ -185,17 +182,9 @@ body {
 		padding-top: 176px;
 		padding-right: 0;
 		font: 500 20px 'Exo';
-		@media ($phone) {
-		padding-top: 10%;
-		padding: 5%;
-		}
-		@media ($tablet) {
-		padding-top: 10%;
-		padding: 5%;
-		}
 		@media ($desktop) {
-		padding-top: 10%;
-		padding: 5%;
+			padding-top: 10%;
+			padding: 5%;
 		}
 		h4 {
 			color: $color-pink;
@@ -208,17 +197,9 @@ body {
 			letter-spacing: 1.6px;
 			line-height: 50px;
 
-			@media ($phone) {
-			font-size: 20px;
-			margin: -3px 0 10px -1px;
-			}
-			@media ($tablet) {
-			font-size: 28px;
-			margin: -3px 0 10px -1px;
-			}
 			@media ($desktop) {
-			font-size: 35px;
-			margin: -3px 0 10px -1px;
+				font-size: 35px;
+				margin: -3px 0 10px -1px;
 			}
 
 			span {
@@ -233,14 +214,8 @@ body {
 			line-height: 26px;
 			letter-spacing: 1.07px;
 
-			@media ($phone) {
-			padding: 0;
-			}
-			@media ($tablet) {
-			padding: 0;
-			}
 			@media ($desktop) {
-			padding: 0;
+				padding: 0;
 			}
 		}
 	}
@@ -253,14 +228,8 @@ body {
 	background: $color-almost-white;
 	font: 500 20px 'Exo';
 	text-align: center;
-	@media ($phone) {
-		padding: 5% 0;	
-	}
-	@media ($tablet) {
-		padding: 5% 0;	
-	}
 	@media ($desktop) {
-		padding: 5% 0;	
+		padding: 5% 0;
 	}
 
 	h2 {
@@ -315,7 +284,7 @@ body {
 		}
 	}
 
-	@media ($sm-phone) {
+	@media ($m-desktop) {
 		.penholder {
 			display: inline-block;
 			position: absolute;
@@ -325,6 +294,7 @@ body {
 			top: -10px;
 			left: 94px;
 			background-image: url(../img/penholder.png);
+			transform: translate(0, -300px);
 		}
 
 		.coffee-cup {
@@ -346,6 +316,18 @@ body {
 			top: -31px;
 			right: 140px;
 			background-image: url(../img/earphones.png);
+			transform: translate(0, -275px);
+		}
+
+		&.active {
+			.penholder {
+				transition: 1s ease-out;
+				transform: translate(0, 0);
+			}
+			.earphones {
+				transition: 1.5s ease-in-out;
+				transform: translate(0, 0);
+			}
 		}
 	}
 }
@@ -355,17 +337,11 @@ body {
 	padding-bottom: 88px;
 	z-index: 2;
 	background: #fff;
-	@media ($phone) {
-		padding-bottom: 5%;
-	}
-	@media ($tablet) {
-		padding-bottom: 5%;
-	}
 	@media ($desktop) {
 		padding-bottom: 5%;
 	}
 
-	@media ($sm-phone) {
+	@media ($m-desktop) {
 		&:before {
 			content: "";
 			position: absolute;
@@ -393,11 +369,21 @@ body {
 			padding-top: 93px;
 			margin-left: -96px;
 			max-width: 114%;
-			@media ($phone) {
+			transform: translate3d(-3000px, 0, 0);
+			@media ($tablet) {
 				display: none;
+			}
 		}
 	}
-}
+
+	@media ($m-mobile) {
+		&.active {
+			.macbook img {
+				transform: translate3d(0, 0, 0);
+				@include bounce(2s);
+			}
+		}
+	}
 
 	.responsive-design {
 		font: 500 20px 'Exo';
@@ -417,224 +403,234 @@ body {
 		}
 
 		h2 {
-				font-size: 40px;
-				margin: 16px 0 28px 0;
-				padding-right: 11px;
-				letter-spacing: 2.2px;
-				line-height: 50px;
-				@media ($phone) {
-					font-size: 18px;
-					margin: 16px 0 10px 0;
-				}
-				@media ($mobile) {
-					font-size: 22px;
-					margin: 16px 0 10px 0;
-				}
-
-				span {
-					color: $color-pink;
-					letter-spacing: 2.5px;
-				}
-			
-		}
-
-			p {
-				padding: 3px 5% 14px 0;
-				font-size: 16px;
-				line-height: 26px;
-				letter-spacing: .7px;
-				@media ($phone) {
-					padding: 0;
-
-			}
-			}
-		}
-	}
-
-.clients {
-		padding-top: 100px;
-		background-image: url(..//img/clients.png);
-		background-size: 100%;
-		@media ($phone) {
-				padding-top: 5%;
-		}
-		@media ($tablet) {
-				padding-top: 5%;
-		}
-		@media ($desktop) {
-				padding-top: 5%;
-		}
-
-		.founders {
-			margin-top: 20px;
-			font: 500 20px 'Exo';
-			text-align: center;
-
-			h2 {
-				margin-top: 5px;
-				padding-top: 7px;
-				color: $color-almost-white;
-				font-size: 20px;
-				letter-spacing: 2px;
-				line-height: 50px;
-			}
-
-			h4 {
-				margin-top: -16px;
-				color: $color-pink;
-				font-size: 14px;
-				letter-spacing: 1px;
-			}
-
-			p {
-				padding: 3px 0 14px 0;
-				margin-top: 28px;
-				font: 500 18px 'Exo';
-				font-style: italic;
-				color: $color-almost-white;
-				line-height: 25px;
-				letter-spacing: -0.1px;
-				@media ($phone) {
-					margin-top: 5%;
-					margin-bottom: 10%;
-				}
-				@media ($tablet) {
-					margin-top: 5%;
-					margin-bottom: 10%;
-				}
-			}
-		}
-
-		.photo {
-			margin: -10px 0 0 -3px;
-			display: inline-block;
-			width: 78px;
-			height: 77px;
-			background: #000;
-		}
-
-		.logos {
-			margin-top: 15px;
-			padding-bottom: 79px;
+			font-size: 40px;
+			margin: 16px 0 28px 0;
+			padding-right: 11px;
+			letter-spacing: 2.2px;
+			line-height: 50px;
 			@media ($phone) {
-				display: none;
+				font-size: 18px;
+			}
+			@media ($mobile) {
+				font-size: 22px;
+				margin: 16px 0 10px 0;
 			}
 
 			span {
-				margin-top: 46px;
-				max-width: 963;
-				height: 85px;
-				display: inline-block;
-
-					img {
-						max-width: 100%;
-						height: 85px;
-					}
-					margin: 0;
-			}
-		}
-	}
-
-.browser {
-		background: $color-almost-white;
-		font: 500 20px 'Exo';
-
-		.brows {
-			img {
-				padding-top: 80px;
-				margin-left: -36px;
-				max-width: 114%;
-				@media ($phone) {
-					display: none;
-				}			
-			}
-		}
-
-		.headers {
-
-			h4 {
-				padding-top: 97px;
 				color: $color-pink;
-				letter-spacing: 2px;
-				@media ($phone) {
-				padding-top: 5%;
-				}
-				@media ($tablet) {
-				padding-top: 5%;
-				}
-				@media ($desktop) {
-				padding-top: 5%;
-				}
-			}
-
-			h2 {
-				margin: -5px 0 35px 0;
-				font-size: 40px;
-				letter-spacing: 1.6px;
-				line-height: 50px;
-				@media ($phone) {
-				padding-top: 5%;
-				font-size: 20px;
-				margin-bottom: 5%;
-				}
-				@media ($mobile) {
-					font-size: 25px;
-				}
-				@media ($desktop) {
-					font-size: 25px;
-				}
+				letter-spacing: 2.5px;
 			}
 		}
 
-		.par {
-			padding: 0 5%;
-			p {
-				margin-top: -5px;
-				font-size: 15px;
-				line-height: 26px;
-				letter-spacing: 1.07px;
-				text-align: center;
-				@media ($phone) {
-					padding-bottom: 5%;
-					text-align: left;
+		p {
+			padding: 3px 5% 14px 0;
+			font-size: 16px;
+			line-height: 26px;
+			letter-spacing: .7px;
+			@media ($phone) {
+				padding: 0;
+			}
+		}
+	}
+}
+
+.clients {
+	padding-top: 100px;
+	background-image: url(../img/clients.png);
+	background-size: 100%;
+	@media ($desktop) {
+		padding-top: 5%;
+	}
+
+	@media ($m-tablet) {
+
+		.col-md-4 {
+			transform: translate3d(0, 100%, 0);
+		}
+
+		&.active {
+			.col-md-4 {
+				transform: translate3d(0, 0, 0);
+				&:nth-of-type(1) {
+					@include slideInUp(.75s);
+				}
+				&:nth-of-type(2) {
+					@include slideInUp(1s);
+				}
+				&:nth-of-type(3) {
+					@include slideInUp(1.25s);
 				}
 			}
 		}
 	}
 
-.try-it {
-		padding-bottom: 82px;
-		background: $color-dark-blue;
+	.founders {
+		margin-top: 20px;
 		font: 500 20px 'Exo';
-		@media ($phone) {
-			padding-bottom: 5%;			
+		text-align: center;
+
+		h2 {
+			margin-top: 5px;
+			padding-top: 7px;
+			color: $color-almost-white;
+			font-size: 20px;
+			letter-spacing: 2px;
+			line-height: 50px;
 		}
-		
 
 		h4 {
-			margin-bottom: 0;
-			padding-top: 85px;
+			margin-top: -16px;
+			color: $color-pink;
+			font-size: 14px;
+			letter-spacing: 1px;
+		}
+
+		p {
+			padding: 3px 0 14px 0;
+			margin-top: 28px;
+			font: 500 18px 'Exo';
+			font-style: italic;
+			color: $color-almost-white;
+			line-height: 25px;
+			letter-spacing: -0.1px;
+			@media ($tablet) {
+				margin-top: 5%;
+				margin-bottom: 10%;
+			}
+		}
+	}
+
+	.photo {
+		margin: -10px 0 0 -3px;
+		display: inline-block;
+		width: 78px;
+		height: 77px;
+		background: #000;
+	}
+
+	.logos {
+		margin-top: 15px;
+		padding-bottom: 79px;
+		@media ($phone) {
+			display: none;
+		}
+
+		span {
+			margin-top: 46px;
+			max-width: 963;
+			height: 85px;
+			display: inline-block;
+
+			img {
+				max-width: 100%;
+				height: 85px;
+			}
+			margin: 0;
+		}
+	}
+}
+
+.browser {
+	position: relative;
+	background: $color-almost-white;
+	font: 500 20px 'Exo';
+	z-index: 1;
+
+	&.active {
+		.brows img {
+			transform: translate3d(0, 0, 0);
+			@include slideInUp(1.5s);
+		}
+	}
+
+	.brows {
+		img {
+			padding-top: 80px;
+			margin-left: -36px;
+			max-width: 114%;
+			transform: translate3d(0, 100%, 0);
+			@media ($tablet) {
+				display: none;
+			}
+		}
+	}
+
+	.headers {
+
+		h4 {
+			padding-top: 97px;
 			color: $color-pink;
 			letter-spacing: 2px;
-			@media ($phone) {
+			@media ($desktop) {
 				padding-top: 5%;
 			}
-			
 		}
 
 		h2 {
-			color: $color-almost-white;
+			margin: -5px 0 35px 0;
 			font-size: 40px;
 			letter-spacing: 1.6px;
-			line-height: 22px;
+			line-height: 50px;
 			@media ($phone) {
+				padding-top: 5%;
 				font-size: 20px;
+				margin-bottom: 5%;
 			}
-			@media ($mobile) {
+			@media ($desktop) {
 				font-size: 25px;
 			}
-			
 		}
+	}
+
+	.par {
+		padding: 0 5%;
+		p {
+			margin-top: -5px;
+			font-size: 15px;
+			line-height: 26px;
+			letter-spacing: 1.07px;
+			text-align: center;
+			@media ($phone) {
+				padding-bottom: 5%;
+				text-align: left;
+			}
+		}
+	}
+}
+
+.try-it {
+	position: relative;
+	padding-bottom: 82px;
+	background: $color-dark-blue;
+	font: 500 20px 'Exo';
+	z-index: 2;
+	@media ($phone) {
+		padding-bottom: 5%;
+	}
+
+
+	h4 {
+		margin-bottom: 0;
+		padding-top: 85px;
+		color: $color-pink;
+		letter-spacing: 2px;
+		@media ($phone) {
+			padding-top: 5%;
+		}
+	}
+
+	h2 {
+		color: $color-almost-white;
+		font-size: 40px;
+		letter-spacing: 1.6px;
+		line-height: 22px;
+		@media ($phone) {
+			font-size: 20px;
+		}
+		@media ($mobile) {
+			font-size: 25px;
+		}
+	}
 
 	.days {
 		margin-top: 40px;
@@ -643,338 +639,338 @@ body {
 			margin: 0 43px 0 0;
 			padding: 0;
 			display: inline;
-			
-			
+
+
 			.arrow {
-		margin: 10px -21px 0px 0;
-		vertical-align: top;
-		display: inline-block;
-		height: 41px;
-		width: 56px;
-		background: url('../img/arrow.png') no-repeat;
+				margin: 10px -21px 0px 0;
+				vertical-align: top;
+				display: inline-block;
+				height: 41px;
+				width: 56px;
+				background: url('../img/arrow.png') no-repeat;
+			}
 		}
-		}
-		
 	}
 
-			form {
-				margin: 17px 0 110px 0;
+	form {
+		margin: 17px 0 110px 0;
+		@media ($phone) {
+			margin-bottom: 5%;
+		}
+		@media ($tablet) {
+			margin-bottom: 5%;
+		}
+
+
+		.try-button {
+			display: inline;
+			width: 100%;
+			height: 49px;
+			background: $color-pink;
+			color: $color-almost-white;
+			font-size: 16px;
+			letter-spacing: -0.4px;
+			border: 1px solid $color-pink;
+			border-radius: 3px;
+			@media ($phone) {
+				margin: 1% 0;
+			}
+			@media ($tablet) {
+				margin: 1% 0;
+			}
+
+			&:focus {
+				box-shadow: 0 0 5px $color-grey;
+			}
+			&:active {
+				background: $color-almost-white;
+				color: $color-pink;
+			}
+		}
+
+		.in {
+
+			input {
+				padding: 3px 65px 5px 27px;
+				width: 100%;
+				height: 50px;
+				color: #fff;
+				background: $color-blue-grey;
+				border: 1px solid $color-grey;
+				border-radius: 3px;
 				@media ($phone) {
-					margin-bottom: 5%;
+					margin: 1% 0;
 				}
 				@media ($tablet) {
-					margin-bottom: 5%;
+					margin: 1% 0;
 				}
 
 
-				.try-button {
-					display: inline;
-					width: 100%;
-					height: 49px;
-					background: $color-pink;
+				&:focus {
+					box-shadow: 0 0 8px $color-grey;
+					transition: all $t-duration ease-in-out;
+				}
+
+				&::-webkit-input-placeholder {
 					color: $color-almost-white;
 					font-size: 16px;
-					letter-spacing: -0.4px;
-					border: 1px solid $color-pink;
-					border-radius: 3px;
-					@media ($phone) {
-							margin: 1% 0;
-						}
-						@media ($tablet) {
-							margin: 1% 0;
-						}
-
-					&:focus {
-						box-shadow: 0 0 5px $color-grey;
-					}
-					&:active {
-						background: $color-almost-white;
-						color: $color-pink;
-					}
+					letter-spacing: 0.3px;
 				}
-
-				.in {
-
-					input {
-						padding: 3px 65px 5px 27px;
-						width: 100%;
-						height: 50px;
-						color: #fff;
-						background: $color-blue-grey;
-						border: 1px solid $color-grey;
-						border-radius: 3px;
-						@media ($phone) {
-							margin: 1% 0;
-						}
-						@media ($tablet) {
-							margin: 1% 0;
-						}
-						
-
-						&:focus {
-							box-shadow: 0 0 8px $color-grey;
-						}
-
-						&::-webkit-input-placeholder {
-							color: $color-almost-white;
-							font-size: 16px;
-							letter-spacing: 0.3px;
-						}
-						&::-moz-placeholder {
-							color: $color-almost-white;
-						}
-						&:-ms-input-placeholder {
-							color: $color-almost-white;
-						}
-						&:-moz-placeholder {
-							color: $color-almost-white;
-						}
-					}
-				}
-			}
-
-			p {
-				display: inline;
-				color: $color-almost-white;
-				font-size: 15px;
-				line-height: 26px;
-				letter-spacing: 1.1px;
-				a {
+				&::-moz-placeholder {
 					color: $color-almost-white;
-					text-decoration: underline;
 				}
-
+				&:-ms-input-placeholder {
+					color: $color-almost-white;
+				}
+				&:-moz-placeholder {
+					color: $color-almost-white;
+				}
 			}
 		}
+	}
 
-		footer {
+	p {
+		display: inline;
+		color: $color-almost-white;
+		font-size: 15px;
+		line-height: 26px;
+		letter-spacing: 1.1px;
+		a {
+			color: $color-almost-white;
+			text-decoration: underline;
+		}
+	}
+}
+
+footer {
+	position: relative;
+	@media ($m-desktop) {
+		&:before {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 0;
+			height: 0;
+			border-bottom: 339px solid transparent;
+			border-right: 324px solid $color-pink;
+		}
+	}
+
+	.ex h2 {
+		position: relative;
+		margin-top: 92px;
+		display: block;
+		font: 500 'Exo';
+		font-size: 25px;
+		letter-spacing: 1px;
+		@media ($phone) {
+			margin: 10% 0;
+		}
+		@media ($tablet) {
+			margin: 5% 0;
+		}
+
+		&:after {
+			content: '';
+			margin: -5px 0 0 -30px;
+			position: absolute;
+			width: 0px;
+			height: 0px;
+			border-top: 20px solid transparent;
+			border-left: 40px solid $color-pink;
+			border-bottom: 20px solid transparent;
+			z-index: -1;
+		}
+
+		span {
+			color: $color-almost-white;
+		}
+	}
+
+	h2 {
+		position: relative;
+		margin: 92px 0 0 2px;
+		font: 500 'Exo';
+		font-size: 24px;
+		letter-spacing: 0.2px;
+	}
+
+	p {
+		margin-top: 19px;
+		font: 500 'Exo';
+		font-size: 13px;
+		letter-spacing: 0.98px;
+		line-height: 26px;
+	}
+
+	.panel-group .panel+.panel {
+		margin-top: 90px;
+		@media ($phone) {
+			margin-top: 10%;
+		}
+		@media ($tablet) {
+			margin-top: 5%;
+		}
+	}
+
+	.support {
+		display: block;
+		margin-top: 89px;
+		border-color: #fff;
+		@media ($phone) {
+			margin: 10% 0;
+		}
+		@media ($tablet) {
+			margin: 5% 0;
+		}
+
+		a {
 			position: relative;
-			@media ($sm-phone) {
-				&:before {
-				content: "";
+			margin: 92px 0 0 2px;
+			font: 500 'Exo';
+			font-size: 24px;
+			letter-spacing: 0.2px;
+			color: $color-almost-black;
+		}
+
+		ul li {
+			margin: 0 0 -3px 2px;
+			padding: 5px 0 0 2px;
+			list-style-type: none;
+
+			a {
+				color: $color-almost-black;
+				font: 500 'Exo';
+				line-height: 29px;
+				font-size: 14px;
+				letter-spacing: 0.4px;
+			}
+		}
+	}
+
+	.about {
+		display: block;
+		margin-top: 89px;
+		border-color: #fff;
+
+		a {
+			position: relative;
+			margin: 92px 0 0 2px;
+			font: 500 'Exo';
+			font-size: 24px;
+			letter-spacing: 0.2px;
+			color: $color-almost-black;
+		}
+
+		ul li {
+			margin: 0 0 -3px 4px;
+			padding: 4px 0 0 2px;
+			list-style-type: none;
+
+			a {
+				color: $color-almost-black;
+				font: 500 'Exo';
+				line-height: 29px;
+				font-size: 14px;
+				letter-spacing: 0.5px;
+			}
+		}
+	}
+
+	.newsletter {
+		display: block;
+
+		h2 {
+			margin: 72px 0 25px 0;
+			letter-spacing: 0.4px;
+			@media ($phone) {
+				margin: 10% 0;
+			}
+			@media ($tablet) {
+				margin: 5% 0;
+			}
+		}
+
+		.email-send {
+			position: relative;
+			width: 269px;
+			height: 49px;
+
+			@media ($phone) {
+				width: 100%;
+			}
+			@media ($tablet) {
+				width: 100%;
+			}
+
+			input {
+				padding: 4px 65px 4px 27px;
+				width: 100%;
+				height: 100%;
+				font-size: 16px;
+				text-transform: uppercase;
+				border: 1px solid $color-grey;
+				border-radius: 3px;
+
+				&:focus {
+					box-shadow: 0 0 8px $color-grey;
+					transition: all $t-duration ease-in-out;
+				}
+			}
+
+			button {
 				position: absolute;
-				right: 0;
 				top: 0;
-				width: 0;
-				height: 0;
-				border-bottom: 339px solid transparent;
-				border-right: 324px solid $color-pink;
-			}
-			}
+				right: 0;
+				width: 52px;
+				height: 100%;
+				background: $color-pink;
+				background-image: url('../img/icon-plane-letter.png');
+				background-repeat: no-repeat;
+				background-position: center center;
+				border: 1px solid $color-pink;
+				border-radius: 3px;
 
-			.ex h2 {
-				position: relative;
-				margin-top: 92px;
-				display: block;
-				font: 500 'Exo';
-				font-size: 25px;
-				letter-spacing: 1px;
-				@media ($phone) {
-					margin: 10% 0;
-				}
-				@media ($tablet) {
-					margin: 5% 0;
-				}
-
-				&:after {
-					content: '';
-					margin: -5px 0 0 -30px;
-					position: absolute;
-					width: 0px;
-					height: 0px;
-					border-top: 20px solid transparent;
-					border-left: 40px solid $color-pink;
-					border-bottom: 20px solid transparent;
-					z-index: -1;
-				}
-
-				span {
-					color: $color-almost-white;
-				}
-			}
-
-			h2 {
-				position: relative;
-				margin: 92px 0 0 2px;
-				font: 500 'Exo';
-				font-size: 24px;
-				letter-spacing: 0.2px;
-
-			}
-
-			p {
-				margin-top: 19px;
-				font: 500 'Exo';
-				font-size: 13px;
-				letter-spacing: 0.98px;
-				line-height: 26px;
-			}
-
-			.panel-group .panel+.panel {
-				margin-top: 90px;
-				@media ($phone) {
-					margin-top: 10%;
-				}
-				@media ($tablet) {
-					margin-top: 5%;
-				}
-			}
-
-			.support {
-				display: block;
-				margin-top: 89px;
-				border-color: #fff; 
-				@media ($phone) {
-					margin: 10% 0;
-				}
-				@media ($tablet) {
-					margin: 5% 0;
-				}
-
-				a {
-					position: relative;
-					margin: 92px 0 0 2px;
-					font: 500 'Exo';
-					font-size: 24px;
-					letter-spacing: 0.2px;
-					color: $color-almost-black;
-				}
-
-				ul li {
-					margin: 0 0 -3px 2px;
-					padding: 5px 0 0 2px;
-					list-style-type: none;
-
-					a {
-						color: $color-almost-black;
-						font: 500 'Exo';
-						line-height: 29px;
-						font-size: 14px;
-						letter-spacing: 0.4px;
-					}
-				}
-			}
-
-			.about {
-				display: block;
-				margin-top: 89px;
-				border-color: #fff; 
-
-				a {
-					position: relative;
-					margin: 92px 0 0 2px;
-					font: 500 'Exo';
-					font-size: 24px;
-					letter-spacing: 0.2px;
-					color: $color-almost-black;
-				}
-
-				ul li {
-					margin: 0 0 -3px 4px;
-					padding: 4px 0 0 2px;
-					list-style-type: none;
-
-					a {
-						color: $color-almost-black;
-						font: 500 'Exo';
-						line-height: 29px;
-						font-size: 14px;
-						letter-spacing: 0.5px;
-					}
-				}
-			}
-
-			.newsletter {
-				display: block;
-
-				h2 {
-					margin: 72px 0 25px 0;
-					letter-spacing: 0.4px;
-					@media ($phone) {
-					margin: 10% 0;
-					}
-					@media ($tablet) {
-					margin: 5% 0;
-					}
-				}
-
-				.email-send {
-					position: relative;
-					width: 269px;
-					height: 49px;
-
-					@media ($phone) {
-						width: 100%;
-					}
-					@media ($tablet) {
-						width: 100%;
-					}
-
-					input {
-						padding: 4px 65px 4px 27px;
-						width: 100%;
-						height: 100%;
-						font-size: 16px;
-						text-transform: uppercase;
-						border: 1px solid $color-grey;
-						border-radius: 3px;
-
-						&:focus {
-							box-shadow: 0 0 8px $color-grey;
-						}
-					}
-
-					button {
-						position: absolute;
-						top: 0;
-						right: 0;
-						width: 52px;
-						height: 100%;
-						background: $color-pink;
-						background-image: url('../img/icon-plane-letter.png');
-						background-repeat: no-repeat;
-						background-position: center center;
-						border: 1px solid $color-pink;
-						border-radius: 3px;
-
-						&:hover {
-							box-shadow: 0px 3px 4px -1px $color-grey;
-						}
-					}
-				}
-
-				.links {
-					margin-top: 15px;
-					margin-bottom: 50px;
-
-					&:focus {
-						box-shadow: 0 0 5px $color-grey;
-					}
-
-					span {
-						height: 21px;
-						width: 25px;
-						display: inline-block;
-						background-image: url(..//img/icons.png);
-					}
-
-					.icon-1 {
-						margin-right: 14px;
-					}
-
-					.icon-2 {
-						background-position: -42px 0;
-						margin-right: 14px;
-					}
-
-					.icon-3 {
-						background-position: -86px 0;
-						margin-right: 14px;
-					}
-
-					.icon-4 {
-						background-position: -127px 0;
-					}
+				&:hover {
+					box-shadow: 0 0 4px -1px $color-grey;
+					@include bounce-in(.5s);
 				}
 			}
 		}
+
+		.links {
+			margin-top: 15px;
+			margin-bottom: 50px;
+
+			&:focus {
+				box-shadow: 0 0 5px $color-grey;
+			}
+
+			span {
+				height: 21px;
+				width: 25px;
+				display: inline-block;
+				background-image: url(..//img/icons.png);
+			}
+
+			.icon-1 {
+				margin-right: 14px;
+			}
+
+			.icon-2 {
+				background-position: -42px 0;
+				margin-right: 14px;
+			}
+
+			.icon-3 {
+				background-position: -86px 0;
+				margin-right: 14px;
+			}
+
+			.icon-4 {
+				background-position: -127px 0;
+			}
+		}
+	}
+}
