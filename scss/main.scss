@@ -51,7 +51,9 @@ body {
 
 		@media ($phone) {
 			font-size: 25px;
-			padding-top: 5%;
+			padding-top: 20%;
+			width: 100%;
+			line-height: 50px;
 		}
 	}
 
@@ -139,7 +141,7 @@ body {
 	margin: 0 auto;
 	padding-bottom: 139px;
 	z-index: 2;
-	background: $color-almost-white;
+	background: #fff;
 	@media ($desktop) {
 		padding-bottom: 5%;
 	}
@@ -520,12 +522,17 @@ body {
 			max-width: 963;
 			height: 85px;
 			display: inline-block;
+			margin: 0;
 
 			img {
 				max-width: 100%;
 				height: 85px;
+				@media ($tablet) {
+					max-width: 90%;
+					height: 60px;
+				}
 			}
-			margin: 0;
+			
 		}
 	}
 }
@@ -590,8 +597,8 @@ body {
 			line-height: 26px;
 			letter-spacing: 1.07px;
 			text-align: center;
-			@media ($phone) {
-				padding-bottom: 5%;
+			@media ($tablet) {
+				padding-bottom: 10%;
 				text-align: left;
 			}
 		}
@@ -626,9 +633,11 @@ body {
 		line-height: 22px;
 		@media ($phone) {
 			font-size: 20px;
+			padding: 0 5px;
+			line-height: 30px;
 		}
 		@media ($mobile) {
-			font-size: 25px;
+			font-size: 23px;
 		}
 	}
 
